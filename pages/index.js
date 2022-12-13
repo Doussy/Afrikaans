@@ -6,7 +6,7 @@ import Link from 'next/link';
 export async function getStaticProps() {
   const files = fs.readdirSync('artikels');
 
-  const posts = files.map((fileName) => {
+  const posts = files.reverse().map((fileName) => {
     const slug = fileName.replace('.md', '');
     const readFile = fs.readFileSync(`artikels/${fileName}`, 'utf-8');
     const { data: frontmatter } = matter(readFile);
